@@ -3,6 +3,7 @@ Windows Phone 7.1 App that record GPS paths into GPX files with the possibility 
 
 **Dev with:**
 IDE: Windows Phone 8 SDK + Visual Studio Express 2012 for Windows Phone: https://www.microsoft.com/fr-fr/download/details.aspx?id=35471
+
 SCCS: Team Foundation Server 2012: https://www.microsoft.com/fr-fr/download/details.aspx?id=38185
 Language: C#
 
