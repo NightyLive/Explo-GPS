@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Explo_GPS.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:tool="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+        
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contient le nom de l'application et le titre de la page-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="Explo GPS" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="Données" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - placez tout contenu supplémentaire ici-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <!--<Button Content="Localisation" Height="74" HorizontalAlignment="Left" Margin="30,30,0,0" Name="Button_Start" VerticalAlignment="Top" Width="190" FontSize="20" Click="Click_Start" />
+            <Button Content="Arret" Height="74" HorizontalAlignment="Right" Margin="0,30,30,0" Name="Button_Stop" VerticalAlignment="Top" Width="190" FontSize="20" Click="Click_Stop" />
+            -->
+
+            <tool:ToggleSwitch Margin="0,0,0,0" x:Name="Switch_Start" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="450" Checked="Click_Start" Unchecked="Click_Stop" Content="Désactivée">
+                <tool:ToggleSwitch.HeaderTemplate>
+                    <DataTemplate>
+                        <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Surveillance GPS" />
+                    </DataTemplate>
+                </tool:ToggleSwitch.HeaderTemplate>
+            </tool:ToggleSwitch>
+            
+            <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" Name="textBlock1" Text="Données reçues" VerticalAlignment="Top" Width="250" Foreground="{StaticResource PhoneSubtleBrush}"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,100,0,0" Name="textBlock2" Text="Session actuelle: 0 points" VerticalAlignment="Top" Width="250" Foreground="{StaticResource PhoneAccentBrush}" FlowDirection="RightToLeft" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,140,0,0" Name="textBox1" Text="" VerticalAlignment="Top" Height="300" Width="445" TextWrapping="Wrap" />
+
+
+            <!--<ScrollContentPresenter Name="ScrollBox1" Height="300" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="440" CanHorizontallyScroll="True" CanVerticallyScroll="True"></ScrollContentPresenter>-->
+            <!--<ListBox Name="listBox1" Height="330" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="450">
+                <ListBox.Background>
+                    <SolidColorBrush Color="Black" />
+                </ListBox.Background>
+            </ListBox>-->
+            
+            
+        </Grid>
+        <my:AdControl AdUnitId="10038292" ApplicationId="74115129-3e40-44be-8a04-8936c8b36501" IsAutoCollapseEnabled="True" Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,0" Name="adControl1" VerticalAlignment="Bottom" Width="480" Height="80"/>
+        <!--<my:AdControl AdUnitId="10028114" ApplicationId="74115129-3e40-44be-8a04-8936c8b36501" Grid.Row="1" Height="80" HorizontalAlignment="Center" Margin="0,0,0,0" Name="adControl1" VerticalAlignment="Bottom" Width="480" ErrorOccurred="adControl1_ErrorOccurred" AdRefreshed="adControl1_AdRefreshed"/>-->
+        <!--<my:AdControl AdUnitId="10028114" ApplicationId="74115129-3e40-44be-8a04-8936c8b36501" Grid.Row="1" Height="50" HorizontalAlignment="Center" Margin="0,0,0,0" Name="adControl1" VerticalAlignment="Bottom" Width="300" ErrorOccurred="adControl1_ErrorOccurred" AdRefreshed="adControl1_AdRefreshed"/>-->
+    </Grid>
+
+    <!--Exemple de code illustrant l'utilisation d'ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Opacity="1">
+            <shell:ApplicationBarIconButton Click="Click_Map" IconUri="/icons/earth.png" Text="carte"/>
+            <shell:ApplicationBarIconButton Click="Click_Compas" IconUri="/icons/compass.png" Text="boussole"/>
+            <shell:ApplicationBarIconButton Click="Click_GPX" IconUri="/icons/appbar.database.png" Text="gpx"/>
+            <shell:ApplicationBarIconButton Click="Click_Skydrive" IconUri="/icons/appbar.skydrive.png" Text="skydrive"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="Click_Email" Text="envoi position par e-mail"/>
+                <shell:ApplicationBarMenuItem Click="Click_SMS" Text="envoi position par sms"/>
+                <shell:ApplicationBarMenuItem Click="Click_Settings" Text="paramètres"/>
+                <!--<shell:ApplicationBarMenuItem Click="Click_Buy" Text="supprimer la publicité"/>-->
+                <shell:ApplicationBarMenuItem Click="Click_About" Text="à propos de"/>
+                <shell:ApplicationBarMenuItem Click="Click_Marketplace_Review" Text="évaluer"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

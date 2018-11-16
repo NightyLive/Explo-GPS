@@ -1,0 +1,91 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Explo_GPS.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <controls:Pivot Title="Explo GPS">
+            <controls:PivotItem Header="A propos">
+                <Grid Width="450">
+                    <Image Source="ApplicationIcon.png" Width="99" Height="99" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock Margin="110,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" FontSize="26" FontWeight="Bold">Explo GPS</TextBlock>
+                    <TextBlock Margin="110,50,0,0" FontSize="22" FontWeight="Bold">Version 1.4 (05.07.2013)</TextBlock>
+                    <TextBlock Margin="0,130,0,0" Foreground="{StaticResource PhoneSubtleBrush}">Contact:</TextBlock>
+                    <HyperlinkButton Margin="0,170,0,0" Click="Click_Email" HorizontalContentAlignment="Left" Height="40" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{StaticResource PhoneAccentBrush}">E-mail</HyperlinkButton>
+                    <HyperlinkButton Margin="0,170,0,0" Click="Click_Marketplace" HorizontalContentAlignment="Right" Height="40" Width="150" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{StaticResource PhoneAccentBrush}">Marketplace</HyperlinkButton>
+                    <!--<HyperlinkButton Margin="0,150,0,0" Click="Click_Site" HorizontalContentAlignment="Left" Height="40" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{StaticResource PhoneAccentBrush}">Site web</HyperlinkButton>-->
+                    <HyperlinkButton Margin="0,220,0,0" Click="Click_Facebook" HorizontalContentAlignment="Left" Height="40" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{StaticResource PhoneAccentBrush}">Facebook</HyperlinkButton>
+                    <HyperlinkButton Margin="0,220,0,0" Click="Click_Google" HorizontalContentAlignment="Right" Height="40" Width="120" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{StaticResource PhoneAccentBrush}">Google+</HyperlinkButton>
+                    <TextBlock Margin="0,300,0,0" TextWrapping="Wrap">En cas de problèmes, vous pouvez prendre contact par email ou par Facebook. Vous pouvez également venir partager vos idées et ainsi contribuer à l'amélioration de l'application.</TextBlock>
+                    <TextBlock Margin="0,420,0,0" TextWrapping="Wrap">Si vous appréciez l'application, n'hésitez pas à évaluer celle-ci sur le marketplace et/ou cliquer sur "j'aime" sur la page Facebook.</TextBlock>
+                    <!--<Button Click="Click_Debug" Width="280" Height="70" Margin="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Rapport système"></Button>-->
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="News">
+                <Grid>
+                    <TextBlock Name="TextBlock_Error" Text="Veuillez patienter pendant le téléchargement des données" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" />
+                    <ListBox Name="ListBox_RSS" SelectionChanged="ListBox_RSS_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=Content}" TextWrapping="Wrap" FontSize="18"/>
+                                    <TextBlock Text="{Binding Path=PubDate}" Margin="0,10,0,0" HorizontalAlignment="Right" FontSize="16"/>
+                                    <HyperlinkButton Margin="-10,-20,0,0" NavigateUri="{Binding Path=Link}" TargetName="_blank" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Foreground="{StaticResource PhoneAccentBrush}" FontSize="14">Article Facebook</HyperlinkButton>
+                                    <Line Margin="0,0,0,0" Stroke="{StaticResource PhoneAccentBrush}" StrokeThickness="2" X1="0" X2="455" Y1="10" Y2="10"/>
+                                    <TextBlock Text=" "></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </controls:PivotItem>
+            <!--<controls:PivotItem Header="Aide">
+            </controls:PivotItem>-->
+            <!--<controls:PivotItem Header="Changelog">
+            </controls:PivotItem>-->
+            <!--<controls:PivotItem Header="Remerciements">
+            </controls:PivotItem>-->
+            <controls:PivotItem Header="Vie privée">
+                <Grid>
+                    <TextBlock Margin="0,0,0,0" TextWrapping="Wrap">Explo GPS utilise votre position pour localiser votre appareil automatiquement. Celle-ci vous sert à vous positionner sur une carte, générer un tracé, ou l'envoyer à un contact.</TextBlock>
+                    <TextBlock Margin="0,107,0,0" TextWrapping="Wrap">Les données de localisation sont stockées dans votre téléphone seulement si vous décidez d'enregistrer vos parcours de manière permanente. Ces parcours peuvent être aussi envoyées sur votre Skydrive si vous le décidez.</TextBlock>
+                    <TextBlock Margin="0,240,0,0" TextWrapping="Wrap">Ces informations ne sont pas utilisées pour vous identifier et ne contiennent aucunes données personnelles.</TextBlock>
+                    <TextBlock Margin="0,319,0,0" TextWrapping="Wrap">Dans tous les cas, ces données ne seront pas tranmises à des fins commerciales et à des tiers sans votre autorisation.</TextBlock>
+                    <TextBlock Margin="0,397,0,0" TextWrapping="Wrap">Vous pouvez toujours, si vous le souhaitez, désactiver la fonction d'enregistrement et/ou de localisation dans les paramètres.</TextBlock>
+                    <TextBlock Margin="0,0,0,5" VerticalAlignment="Bottom">Confidentialité:</TextBlock>
+                    <HyperlinkButton Margin="140,0,0,0" Click="Click_MS_WL" HorizontalContentAlignment="Left" Height="40" Width="220" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource PhoneAccentBrush}" FontSize="20">Skydrive</HyperlinkButton>
+                    <HyperlinkButton Margin="230,0,0,0" Click="Click_MS_WP" HorizontalContentAlignment="Left" Height="40" Width="220" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource PhoneAccentBrush}" FontSize="20">Windows Phone</HyperlinkButton>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    
+    <!--Exemple de code illustrant l'utilisation d'ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Click="Click_Marketplace_Review" IconUri="/icons/appbar.heart.png" Text="évaluer"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="Click_Debug" Text="envoi rapport système"/>
+           </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Click="Click_Back" IconUri="/icons/appbar.back.rest.png" Text="Retour"/>
+            <shell:ApplicationBarIconButton Click="Click_Debug" IconUri="/icons/appbar.feature.settings.rest.png" Text="rapport"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+</phone:PhoneApplicationPage>

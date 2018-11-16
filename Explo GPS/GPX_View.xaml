@@ -1,0 +1,57 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Explo_GPS.GPX_View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="Explo GPS" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="Contenu GPX" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Name="textBlock1" Text="Fichier en cours: " VerticalAlignment="Top" Width="250" Foreground="{StaticResource PhoneSubtleBrush}"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,0,0,0" Name="actualFileName" Text="Fichier" VerticalAlignment="Top" Foreground="{StaticResource PhoneAccentBrush}"/>
+            <!--<StackPanel Orientation="Horizontal">
+                <TextBlock Text="Fichier : " Margin="10,0,0,0"/>
+                <TextBlock Name="actualFileName" Foreground="{StaticResource PhoneAccentBrush}"/>
+            </StackPanel>-->
+            <!--<ListBox x:Name="fileContent" FontSize="12"/>-->
+            <ScrollViewer Margin="10,40,0,0">
+                <TextBlock x:Name="fileContent" FontSize="12"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Opacity="1">
+            <!--<shell:ApplicationBarIconButton IconUri="/icons/appbar.back.rest.png" Text="retour" Click="Click_Back" />-->
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.feature.email.rest.png" Text="envoyer" Click="Click_Email"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.map.png" Text="voir tracé" Click="Click_Map"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/doc_delete.png" Text="effacer" Click="Click_Delete"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="Click_Save" Text="enregistrer une copie"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
+</phone:PhoneApplicationPage>

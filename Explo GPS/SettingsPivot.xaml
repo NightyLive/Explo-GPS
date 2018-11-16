@@ -1,0 +1,161 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Explo_GPS.SettingsPivot"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:tool="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Explo_GPS"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:AppSettings x:Key="appSettings"></local:AppSettings>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Contrôle Pivot-->
+        <controls:Pivot Title="Explo GPS">
+            <controls:PivotItem Header="Général">
+                <Grid>
+                    <!--format données metric ou us-->
+                    <!--format coordonnées decimal ou dms-->
+                    <tool:ToggleSwitch x:Name="Switch_Underlock" Margin="0,0,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Underlock_Setting, Mode=TwoWay}" Content="Désactivé">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Exécution quand verrouillé" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_Avoidlock" Margin="0,100,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Avoidlock_Setting, Mode=TwoWay}" Content="Désactivé">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Ecran toujours actif" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+
+                    <tool:ToggleSwitch x:Name="Switch_GPS_Sensibility" Margin="0,200,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_GPS_Sensibility_Setting, Mode=TwoWay}" Content="Haute">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Sensibilité du GPS" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+
+                    <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="10,300,0,0" Name="textBlock1" Text="Distance entre les relevés (mètres)" VerticalAlignment="Top" Width="300" Foreground="{StaticResource PhoneSubtleBrush}"/>
+                    <tool:ListPicker x:Name="GPS_Treshold_List" Margin="10,320,30,0" HorizontalAlignment="Right" Width="90" Header="" VerticalAlignment="Top" FontSize="20" />
+                    <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="10,330,0,0" Name="textBlock2" Text="Une distance moindre consomme plus de batterie." VerticalAlignment="Top" Width="310" Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" />
+                    <!--<ToggleButton x:Name="Switch_Autostart" Margin="0,200,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Autostart_Setting, Mode=TwoWay}" Content="Désactivée">
+                        <ToggleButton.Template>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Localisation automatique" />
+                            </DataTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>-->
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="Accueil">
+                <Grid>
+                    <tool:ToggleSwitch x:Name="Switch_Autostart" Margin="0,0,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Autostart_Setting, Mode=TwoWay}" Content="Désactivée">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Localisation automatique" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_GPX" Margin="0,100,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_GPX_Setting, Mode=TwoWay}" Content="Désactivé">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Enregistrement GPX automatique" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_GPX_Reset" Margin="0,200,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_GPX_Reset_Setting, Mode=TwoWay}" Content="Désactivé">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Reset 'Session_en_cours' au démarrage" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_Decimal" Margin="0,300,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Decimal_Setting, Mode=TwoWay}" Content="DMS">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Format des coordonnées" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_Metric" Margin="0,400,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Metric_Setting, Mode=TwoWay}" Content="US">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Format des données" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="Carte">
+                <Grid>
+                    <!--config wikipedia radius/nombre-->
+                    <!--config google radius/nombre-->
+                    <!--ListPicker avec les zooms pour zoom par defaut lors de focus ou ajout pin manuel-->
+                    <tool:ToggleSwitch x:Name="Switch_AutostartMap" Margin="0,0,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_AutostartMap_Setting, Mode=TwoWay}" Content="Désactivée">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Localisation automatique" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_Follow" Margin="0,100,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Follow_Setting, Mode=TwoWay}" Content="Désactivé">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Suivi automatique sur la carte" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_Roadmode" Margin="0,200,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_Roadmode_Setting, Mode=TwoWay}" Content="Satellite">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Mode par défaut de la carte" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="Boussole">
+                <Grid>
+                    <tool:ToggleSwitch x:Name="Switch_AutostartCompas" Margin="0,0,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_AutostartCompas_Setting, Mode=TwoWay}" Content="Non">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Boussole activée au démarrage" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                    <tool:ToggleSwitch x:Name="Switch_AutostartCamera" Margin="0,100,0,0" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="460" IsChecked="{Binding Source={StaticResource appSettings}, Path=Switch_AutostartCamera_Setting, Mode=TwoWay}" Content="Non">
+                        <tool:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate>
+                                <ContentControl Foreground="{StaticResource PhoneSubtleBrush}"  Content="Caméra activée au démarrage" />
+                            </DataTemplate>
+                        </tool:ToggleSwitch.HeaderTemplate>
+                    </tool:ToggleSwitch>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    <!--Exemple de code illustrant l'utilisation d'ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Opacity="1" Mode="Minimized">
+            <!--<shell:ApplicationBarIconButton IconUri="/icons/appbar.back.rest.png" Text="retour" Click="Click_Back" />-->
+            <shell:ApplicationBarIconButton IconUri="/icons/refresh2.png" Text="reset" Click="Button_Reset_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

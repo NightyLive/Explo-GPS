@@ -1,0 +1,64 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Explo_GPS.Skydrive"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:my="clr-namespace:Microsoft.Live.Controls;assembly=Microsoft.Live.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contient le nom de l'application et le titre de la page-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="Explo GPS" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="Skydrive" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            
+        </StackPanel>
+
+        <!--ContentPanel - placez tout contenu supplémentaire ici-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Image x:Name="ProfilePicture" Width="140" Height="140" HorizontalAlignment="Right" Margin="0,-140,0,0" VerticalAlignment="Top" />
+            <TextBlock HorizontalAlignment="Right" Margin="0,-144,0,0" Name="textBlockName" Text="" VerticalAlignment="Top" Width="300" Foreground="{StaticResource PhoneAccentBrush}" FlowDirection="RightToLeft" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Name="textBlockStatus" Text="Déconnecté" VerticalAlignment="Top" Width="250" Foreground="{StaticResource PhoneSubtleBrush}"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,0,0,0" Name="textBlockQuota" Text="" VerticalAlignment="Top" Width="300" Foreground="{StaticResource PhoneAccentBrush}" FlowDirection="RightToLeft" />
+            <ListBox x:Name="ListBox_SkyContent" Margin="10,40,10,0" Height="420" VerticalAlignment="Top" MouseLeftButtonUp="File_Select_Click">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" FontSize="26" Margin="0,0,0,10"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--wl.contacts_photos wl.contacts_skydrive wl.basic wl.photos wl.skydrive wl.offline_access wl.signin wl.skydrive_update-->
+            <!--<my:SignInButton Name="btn_Signin" Scopes="wl.offline_access wl.signin wl.basic wl.skydrive wl.skydrive_update" SessionChanged="Signin_SessionChanged" Branding="Skydrive" ClientId="00000000400CAA36" TextType="Custom" VerticalAlignment="Bottom" Margin="0,0,0,0" SignInText="Connexion" SignOutText="Déconnexion" HorizontalAlignment="Center" />-->
+            <my:SignInButton Name="btn_Signin" Scopes="wl.offline_access wl.skydrive_update" SessionChanged="Signin_Get_Session" Branding="Skydrive" ClientId="00000000400CAA36" TextType="Custom" VerticalAlignment="Bottom" Margin="0,0,0,0" SignInText="Connexion" SignOutText="Déconnexion" HorizontalAlignment="Center" />
+        </Grid>
+    </Grid>
+ 
+    <!--Exemple de code illustrant l'utilisation de l'ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.skydrive.upload.png" Text="envoyer" Click="Folder_Upload_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.skydrive.download.png" Text="télécharger" Click="File_Download_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/doc_delete.png" Text="effacer" Click="File_Delete_Click"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="actualiser" Click="Show_Files_Click"/>
+                <shell:ApplicationBarMenuItem Text="télécharger tout" Click="Folder_Download_Click"/>
+                <shell:ApplicationBarMenuItem Text="effacer tout" Click="Folder_Delete_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Phone
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explo GPS", "Explo GPS\Explo GPS.csproj", "{13226BE1-0267-417B-A30C-4270E7FA756E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AC8A4433-8E39-48E8-AAD9-918A28D08549}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.server.url:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Explo\u0020GPS\\Explo\u0020GPS.csproj
+		SccProjectName1 = Explo\u0020GPS
+		SccLocalPath1 = Explo\u0020GPS
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13226BE1-0267-417B-A30C-4270E7FA756E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13226BE1-0267-417B-A30C-4270E7FA756E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13226BE1-0267-417B-A30C-4270E7FA756E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{13226BE1-0267-417B-A30C-4270E7FA756E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13226BE1-0267-417B-A30C-4270E7FA756E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13226BE1-0267-417B-A30C-4270E7FA756E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
